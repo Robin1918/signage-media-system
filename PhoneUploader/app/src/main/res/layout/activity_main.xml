@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📡 Signage Upload"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send media to your TV over WiFi"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TV IP ADDRESS"
+            android:textColor="#00D4FF"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etTvAddress"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="192.168.1.100"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#555555"
+                android:background="#222222"
+                android:padding="10dp"
+                android:inputType="textNoSuggestions"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                android:id="@+id/btnConnect"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Connect"
+                android:textColor="#000000"
+                android:backgroundTint="#00D4FF"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvConnStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not connected"
+            android:textColor="#666666"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnPickFiles"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Pick Videos and Photos"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#333333"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No files selected"
+            android:textColor="#666666"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp"/>
+
+        <ListView
+            android:id="@+id/lvFiles"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#1A1A1A"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="Upload to TV"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:backgroundTint="#00FF88"
+            android:enabled="false"
+            android:layout_marginBottom="12dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#AAAAAA"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+</ScrollView>
