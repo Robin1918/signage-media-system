@@ -1,4 +1,51 @@
-name: Build Signage APKs
+[11:33 pm, 1/5/2026] Robin Mathew: name: Build Signage APKs
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-signage-player:
+    name: Build SignagePlayer APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Grant execute permission
+        run: chmod +x SignagePlayer/gradlew
+      - name: Build SignagePlayer APK
+        run: cd SignagePlayer && ./gradlew assembleDebug
+      - name: Upload SignagePlayer APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignagePlayer-APK
+          path: SignagePlayer/app/build/outputs/apk/debug/app-debug.apk
+
+  build-phone-uploader:
+    name: Build PhoneUploader APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Grant execute permission
+        run: chmod +x PhoneUploader/gradlew
+      - name: Build PhoneUploader APK
+        run: cd PhoneUploader && ./gradlew assembleDebug
+      - name: Upload PhoneUploader APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: PhoneUploader-APK
+          path: PhoneUploader/app/build/outputs/apk/debug/app-debug.apk
+[11:42 pm, 1/5/2026] Robin Mathew: name: Build Signage APKs
 
 on:
   push:
@@ -11,15 +58,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Grant execute permission
-        run: chmod +x SignagePlayer/gradlew
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Build SignagePlayer APK
-        run: cd SignagePlayer && ./gradlew assembleDebug
+        run: cd SignagePlayer && gradle assembleDebug
+
       - name: Upload SignagePlayer APK
         uses: actions/upload-artifact@v4
         with:
@@ -31,15 +82,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Grant execute permission
-        run: chmod +x PhoneUploader/gradlew
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Build PhoneUploader APK
-        run: cd PhoneUploader && ./gradlew assembleDebug
+        run: cd PhoneUploader && gradle assembleDebug
+
       - name: Upload PhoneUploader APK
         uses: actions/upload-artifact@v4
         with:
